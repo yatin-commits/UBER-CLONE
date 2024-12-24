@@ -4,7 +4,7 @@ const router = express.Router();
 // import userMW from '../middlewares/userMW.js'
 import { body} from 'express-validator';
 import { registerUser, loginUser, getUserProfile,logoutUser} from '../middlewares/userMW.js'; 
-import authUser from '../middlewares/authMW.js';
+import {authUser} from '../middlewares/authMW.js';
 // console.log(registerUser);   
 
 router.post('/register',[

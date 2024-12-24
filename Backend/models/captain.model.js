@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+const JWT_SecretKey="yatin2104";
 const captainSchema = new mongoose.Schema({
     fullname: {
         firstname: {

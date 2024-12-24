@@ -18,6 +18,7 @@ const registerUser = async (req, res, next) => {
         return res.status(400).json({ message: "User already exists" });
     }
     
+
     // Hash the password using the userModel's static method
     const hashedPassword = await userModel.hashPassword(password);
     
@@ -57,11 +58,11 @@ const loginUser = async (req, res, next) => {
     res.cookies('token',token);
     res.status(200).json({token,user});         
 }
-const getUserProfile = async (req, res, next) => {s
+const getUserProfile = async (req, res, next) => {
     res.status(200).json({ user: req.user });
 };
 
-const logoutUser = async (req, res, next) => {
+const  logoutUser = async (req, res, next) => {
     res.clearCookie('token');
     
     const token = (req.cookies && req.cookies.token) || (req.headers && req.headers.authorization && req.headers.authorization.split(" ")[1]);   s
