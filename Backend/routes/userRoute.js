@@ -3,8 +3,8 @@ const router = express.Router();
 // import registerUser from '../middlewares/userMW.js';
 // import userMW from '../middlewares/userMW.js'
 import { body} from 'express-validator';
-import { registerUser, loginUser } from '../middlewares/userMW.js'; 
-
+import { registerUser, loginUser, getUserProfile,logoutUser} from '../middlewares/userMW.js'; 
+import authUser from '../middlewares/authMW.js';
 // console.log(registerUser);   
 
 router.post('/register',[
@@ -18,6 +18,9 @@ router.post('/login',[
     body('password').isLength({min:6}).withMessage('First name must be 3 character long!')
 ],loginUser)
 
+router.get('/profile',authUser,getUserProfile)
+
+router.get('/logout',authUser,logoutUser)
 
 
 export default router;
