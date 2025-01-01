@@ -4,6 +4,8 @@ import blackListTokenModel from "../models/blackListToken.model.js";
 import { validationResult } from "express-validator";
 const JWT_SecretKey="yatin2104";
 export const registerCaptain = async (req, res, next) => {
+    // console.log("Inside registerCaptain");
+    
     try {
         const error = validationResult(req);
         if (!error.isEmpty()) {
@@ -11,6 +13,8 @@ export const registerCaptain = async (req, res, next) => {
         }
 
         const { fullname, email, password, vehicle } = req.body;
+        // console.log("Fullname: ", fullname);
+        
 
         // Check if captain already exists
         const isCaptainAlreadyExist = await captainModel.findOne({ email });
@@ -20,6 +24,8 @@ export const registerCaptain = async (req, res, next) => {
 
         // Hash password
         const hashPassword = await captainModel.hashPassword(password);
+        // console.log(hashPassword);
+        
 
         // Create captain
         const captain = await captainServices.createCaptain({
@@ -32,7 +38,8 @@ export const registerCaptain = async (req, res, next) => {
             capacity: vehicle.capacity,
             vehicleType: vehicle.vehicleType,
         });
-
+        // console.log("Captain: ", captain);
+        
         // Generate token
         const token = captain.generateAuthToken();
         res.status(201).json({ token, captain });

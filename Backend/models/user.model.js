@@ -7,13 +7,13 @@ const JWT_SecretKey="yatin2104";
 const userSchema=new mongoose.Schema(
     {
         fullname:{
-            firstName:{
+            firstname:{
                 type:String,
                 required:true,
                 minLength:[3,'First name must be 3 character long']
                  
             },
-            lastName:{
+            lastname:{
                 type:String,
                 minLength:[3,'Last name must be 3 character long']
                  

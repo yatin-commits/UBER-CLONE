@@ -9,7 +9,7 @@ import {authUser} from '../middlewares/authMW.js';
 
 router.post('/register',[
     body('email').isEmail().withMessage("Invalid Email"),
-    body('fullname.firstName').isLength({min:3}).withMessage('First name must be 3 character long!'),
+    body('fullname.firstname').isLength({min:3}).withMessage('First name must be 3 character long!'),
     body('password').isLength({min:6}).withMessage('First name must be 3 character long!')
 ],registerUser)
 
